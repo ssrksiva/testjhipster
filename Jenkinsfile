@@ -18,12 +18,10 @@ node {
     }
 
     stage('install tools') {
-        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5"
+        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5 && ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
 	
-    stage('npm install') {
-        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
-    }
+    
 
     stage('backend tests') {
         try {
