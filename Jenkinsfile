@@ -21,12 +21,14 @@ node {
         sh "./mvnw -ntp checkstyle:check"
     }
 
-	 
+	 stage('check') {
+        sh "${NODE_HOME}"
+		sh "${DOCKER_HOME}"
+    }
+
     stage('install tools') {
-	withNPM(npmrcConfig:'MyNpmrcConfig') {
-            echo "Performing npm build..."
-            sh 'npm install'
-        }
+	
+        sh "./mvnw clean install"
     }
 	
     stage('backend tests') {
