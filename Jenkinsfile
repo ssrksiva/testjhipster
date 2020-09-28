@@ -18,13 +18,9 @@ node {
     }
 
     stage('install tools') {
-        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=3.10.8"
+        sh "./mvnw clean install"
     }
 	
-    stage('npm install') {
-        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
-    }
-
     stage('backend tests') {
         try {
             sh "./mvnw -ntp verify -P-webpack"
@@ -37,7 +33,7 @@ node {
 
     stage('frontend tests') {
         try {
-            sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
+            sh "./npm run test"
         } catch(err) {
             throw err
         } finally {
