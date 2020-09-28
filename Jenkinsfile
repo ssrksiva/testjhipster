@@ -2,7 +2,9 @@
 
 node {
     def NODE_HOME = tool 'Node'
-	env.PATH="${NODE_HOME}:${env.PATH}"
+	def DOCKER_HOME = tool 'docker'
+	env.PATH="${NODE_HOME}:${DOCKER_HOME}:${env.PATH}"
+	
     stage('checkout') {
         checkout scm
     }
