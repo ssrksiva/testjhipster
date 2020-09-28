@@ -22,9 +22,9 @@ node {
     }
 
 	stage('check') {
-        sh "${NODE_HOME}/bin/node --version"
-		sh "${NODE_HOME}/bin/npm --version"
-		
+	    sh "docker --version"
+        sh "node --version"
+		sh "npm --version"
     }
 	
     stage('install tools') {
