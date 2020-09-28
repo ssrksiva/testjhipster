@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 
 node {
+
+    def node_Home = tool 'Maven 3.3.1'
     stage('checkout') {
         checkout scm
     }
