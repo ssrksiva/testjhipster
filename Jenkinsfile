@@ -3,7 +3,7 @@
 node {
     def NODE_HOME = tool 'Node'
 	def DOCKER_HOME = tool 'docker'
-	env.PATH="${NODE_HOME}\bin:${DOCKER_HOME}:${env.PATH}"
+	env.PATH="${NODE_HOME}/bin:${DOCKER_HOME}:${env.PATH}"
 	
     stage('checkout') {
         checkout scm
@@ -22,8 +22,8 @@ node {
     }
 
 	stage('check') {
-        sh "${NODE_HOME}\bin\node --version"
-		sh "${NODE_HOME}\bin\npm --version"
+        sh "${NODE_HOME}/bin/node --version"
+		sh "${NODE_HOME}/bin/npm --version"
 		
     }
 	
