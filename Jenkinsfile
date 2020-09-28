@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 
 node {
+    def NODE_HOME = tool 'Node'
+	env.PATH="${NODE_HOME}:${env.PATH}"
     stage('checkout') {
         checkout scm
     }
@@ -18,7 +20,7 @@ node {
     }
 
 	stage('check') {
-        sh "node --version"
+        sh "${NODE_HOME} --version"
 		sh "npm --version"
     }
 	
