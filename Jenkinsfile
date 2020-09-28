@@ -17,7 +17,7 @@ node {
         sh "./mvnw -ntp checkstyle:check"
     }
 
-	stage('pre-check') {
+	stage('check') {
         sh "node --version"
 		sh "npm --version"
     }
