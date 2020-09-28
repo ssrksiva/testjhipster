@@ -17,6 +17,11 @@ node {
         sh "./mvnw -ntp checkstyle:check"
     }
 
+	stage('pre-check') {
+        sh "node --version"
+		sh "npm --version"
+    }
+	
     stage('install tools') {
         sh "./mvnw clean install"
     }
