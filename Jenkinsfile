@@ -3,7 +3,7 @@
 node {
     def NODE_HOME = tool 'Node'
 	def DOCKER_HOME = tool 'docker'
-	env.PATH="${NODE_HOME}/bin:${DOCKER_HOME}:${env.PATH}"
+	env.PATH="${NODE_HOME}/bin/:${DOCKER_HOME}:${env.PATH}"
 	
     stage('checkout') {
         checkout scm
@@ -21,12 +21,10 @@ node {
         sh "./mvnw -ntp checkstyle:check"
     }
 
-	stage('check') {
-	    sh "node --version"
-	    sh "docker --version"
-		sh "npm --version"
+	 stage('check') {
+        sh "echo ${NODE_HOME}"
+		sh "echo ${DOCKER_HOME}"
     }
-	
     stage('install tools') {
         sh "./mvnw clean install"
     }
