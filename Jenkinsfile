@@ -22,8 +22,8 @@ node {
     }
 
 	stage('check') {
+	    sh "node --version"
 	    sh "docker --version"
-        sh "node --version"
 		sh "npm --version"
     }
 	
