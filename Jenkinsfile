@@ -22,7 +22,7 @@ node {
     }
 
 	stage('check') {
-        sh "${NODE_HOME} --version"
+        sh "${NODE_HOME}\node --version"
 		sh "npm --version"
     }
 	
