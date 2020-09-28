@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 
 node {
-
-    def node_Home = tool 'Maven 3.3.1'
     stage('checkout') {
         checkout scm
     }
@@ -23,6 +21,11 @@ node {
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5"
     }
 
+	stage('pre-install') {
+        sh "mkdir ./node/node"
+		
+    }
+	
     stage('npm install') {
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
