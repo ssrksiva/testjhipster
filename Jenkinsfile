@@ -22,8 +22,8 @@ node {
     }
 
 	 stage('check') {
-        sh "${NODE_HOME}"
-		sh "${DOCKER_HOME}"
+        sh "${NODE_HOME}/bin/node --version"
+		sh "${DOCKER_HOME}/docker --version"
     }
 
     stage('install tools') {
